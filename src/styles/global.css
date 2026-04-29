@@ -267,3 +267,21 @@ input[type="range"] { width: 100%; accent-color: var(--primary); }
   .stat-card { padding: 12px; flex-direction: column; text-align: center; gap: 6px; }
   .export-grid { grid-template-columns: 1fr; }
 }
+
+/* ── 기타 커스텀 태그 입력 ───────────────────────────── */
+.custom-tag-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+.custom-tag-input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+}

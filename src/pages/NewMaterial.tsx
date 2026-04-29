@@ -1,7 +1,7 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Save } from 'lucide-react'
-import { COMPETENCY_OPTIONS, type CompetencyTag } from '@/types'
+import { Save, Plus } from 'lucide-react'
+import { COMPETENCY_OPTIONS } from '@/types'
 import { useMaterialStore } from '@/store/useMaterialStore'
 import { useAuthStore } from '@/store/useAuthStore'
 
@@ -15,18 +15,27 @@ export default function NewMaterial() {
   const [form, setForm] = useState({
     date: today(), scene: '', rawNote: '',
     sparS: '', sparP: '', sparA: '', sparR: '',
-    competencyTags: [] as CompetencyTag[],
+    competencyTags: [] as string[],
     completion: 50,
   })
   const [saving, setSaving] = useState(false)
+  const [showCustom, setShowCustom] = useState(false)
+  const [customInput, setCustomInput] = useState('')
 
-  const toggleTag = (tag: CompetencyTag) => {
+  const toggleTag = (tag: string) => {
     setForm(f => ({
       ...f,
       competencyTags: f.competencyTags.includes(tag)
         ? f.competencyTags.filter(t => t !== tag)
         : [...f.competencyTags, tag],
     }))
+  }
+
+  const addCustomTag = () => {
+    const tag = customInput.trim()
+    if (!tag || form.competencyTags.includes(tag)) { setCustomInput(''); return }
+    setForm(f => ({ ...f, competencyTags: [...f.competencyTags, tag] }))
+    setCustomInput('')
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,6 +52,8 @@ export default function NewMaterial() {
 
   const f = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(prev => ({ ...prev, [field]: e.target.value }))
+
+  const customTags = form.competencyTags.filter(t => !COMPETENCY_OPTIONS.includes(t))
 
   return (
     <div className="page">
@@ -93,11 +104,43 @@ export default function NewMaterial() {
                 key={tag} type="button"
                 className={form.competencyTags.includes(tag) ? 'tag active' : 'tag'}
                 onClick={() => toggleTag(tag)}
-              >
-                {tag}
-              </button>
+              >{tag}</button>
             ))}
+            <button
+              type="button"
+              className={showCustom ? 'tag active' : 'tag'}
+              onClick={() => setShowCustom(s => !s)}
+            >기타</button>
           </div>
+
+          {showCustom && (
+            <div className="custom-tag-row">
+              <input
+                type="text"
+                value={customInput}
+                onChange={e => setCustomInput(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addCustomTag() } }}
+                placeholder="태그 직접 입력 후 Enter"
+                className="custom-tag-input"
+                autoFocus
+              />
+              <button type="button" className="btn-secondary" onClick={addCustomTag}>
+                <Plus size={14} /> 추가
+              </button>
+            </div>
+          )}
+
+          {customTags.length > 0 && (
+            <div className="tag-grid" style={{ marginTop: 8 }}>
+              {customTags.map(tag => (
+                <button
+                  key={tag} type="button"
+                  className="tag active"
+                  onClick={() => toggleTag(tag)}
+                >{tag} ×</button>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="form-row">
