@@ -1,12 +1,12 @@
-import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, BookOpen, PlusCircle, Download, Settings } from 'lucide-react'
+﻿import { Link, useLocation } from 'react-router-dom'
+import { LayoutDashboard, BookOpen, PlusCircle, Download, GitBranch } from 'lucide-react'
 
 const TABS = [
   { to: '/',        icon: LayoutDashboard, label: '대시보드' },
   { to: '/journal', icon: BookOpen,        label: '목록'    },
-  { to: '/new',     icon: PlusCircle,      label: 'NEW' },
+  { to: '/matrix',  icon: GitBranch,       label: '매트릭스'},
+  { to: '/new',     icon: PlusCircle,      label: 'NEW'    },
   { to: '/export',  icon: Download,        label: 'DOWNLOAD'},
-  { to: '/settings',icon: Settings,        label: '설정'   },
 ]
 
 export default function MobileTabBar() {

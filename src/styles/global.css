@@ -285,3 +285,79 @@ input[type="range"] { width: 100%; accent-color: var(--primary); }
   font-size: 14px;
   outline: none;
 }
+
+/* ── 고객응대 매트릭스 ────────────────────────────────── */
+.matrix-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.matrix-step { display: flex; flex-direction: column; gap: 24px; }
+.matrix-question {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.matrix-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.matrix-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 18px 16px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.matrix-btn:hover { border-color: var(--primary); color: var(--primary); }
+.matrix-btn-danger  { border-color: var(--red);   color: var(--red); }
+.matrix-btn-danger:hover  { background: rgba(239,68,68,.1); }
+.matrix-btn-success { border-color: var(--green); color: var(--green); }
+.matrix-btn-success:hover { background: rgba(34,197,94,.1); }
+
+.matrix-result {
+  border-left: 4px solid var(--primary);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--surface2);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.matrix-result-title { font-size: 17px; font-weight: 700; }
+.matrix-note { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+.matrix-script-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.matrix-script {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.matrix-checklist {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.matrix-checklist li::marker { color: var(--primary); }

@@ -1,13 +1,13 @@
-import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, BookOpen, PlusCircle, Download, Settings, LogOut, Anchor } from 'lucide-react'
+﻿import { Link, useLocation } from 'react-router-dom'
+import { LayoutDashboard, BookOpen, PlusCircle, Download, LogOut, Anchor, GitBranch } from 'lucide-react'
 import { useAuthStore } from '@/store/useAuthStore'
 
 const NAV_ITEMS = [
   { to: '/',        icon: LayoutDashboard, label: '대시보드' },
   { to: '/journal', icon: BookOpen,        label: '소재 목록' },
+  { to: '/matrix',  icon: GitBranch,       label: '응대 매트릭스' },
   { to: '/new',     icon: PlusCircle,      label: 'NEW'  },
   { to: '/export',  icon: Download,        label: 'DOWNLOAD' },
-  { to: '/settings',icon: Settings,        label: '설정'    },
 ]
 
 export default function Navigation() {
