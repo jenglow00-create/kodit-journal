@@ -39,7 +39,7 @@ export default function Export() {
   }
 
   const exportMarkdown = () => {
-    const lines = ['# 신보 일경험 인턴 관찰일지 — SPAR 소재 모음\n']
+    const lines = ['# 인턴 일지 — SPAR 소재 모음\n']
     for (const m of materials) {
       lines.push(`## #${m.scene} [${m.date}]`)
       lines.push(`역량: ${m.competencyTags.join(', ')}  완성도: ${COMPLETION_LABELS[m.completion]}\n`)

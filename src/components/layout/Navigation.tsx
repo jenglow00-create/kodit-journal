@@ -18,7 +18,7 @@ export default function Navigation() {
     <nav className="nav">
       <div className="nav-brand">
         <Anchor size={20} />
-        <span>인턴 관찰일지</span>
+        <span>인턴 일지</span>
       </div>
       <ul className="nav-items">
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (

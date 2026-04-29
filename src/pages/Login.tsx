@@ -9,7 +9,7 @@ export default function Login() {
       <div className="login-card">
         <div className="login-brand">
           <Anchor size={48} />
-          <h1>인턴 관찰일지</h1>
+          <h1>인턴 일지</h1>
           <p>신보 일경험 인턴 SPAR 소재 관리</p>
         </div>
         <button
