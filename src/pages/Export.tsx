@@ -16,7 +16,7 @@ export default function Export() {
     'A(행동)': m.sparA,
     'R(결과)': m.sparR,
     역량태그: m.competencyTags.join(', '),
-    완성도: `${COMPLETION_LABELS[m.completion]} (${m.completion}%)`,
+    작성률: `${COMPLETION_LABELS[m.completion]} (${m.completion}%)`,
     원본메모: m.rawNote,
     생성일: m.createdAt.split('T')[0],
   }))
@@ -42,7 +42,7 @@ export default function Export() {
     const lines = ['# 인턴 일지 — SPAR 소재 모음\n']
     for (const m of materials) {
       lines.push(`## #${m.scene} [${m.date}]`)
-      lines.push(`역량: ${m.competencyTags.join(', ')}  완성도: ${COMPLETION_LABELS[m.completion]}\n`)
+      lines.push(`역량: ${m.competencyTags.join(', ')}  작성률: ${COMPLETION_LABELS[m.completion]}\n`)
       lines.push(`### S (상황)\n${m.sparS || '(미작성)'}\n`)
       lines.push(`### P (문제)\n${m.sparP || '(미작성)'}\n`)
       lines.push(`### A (행동)\n${m.sparA || '(미작성)'}\n`)

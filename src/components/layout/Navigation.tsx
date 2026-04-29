@@ -5,8 +5,8 @@ import { useAuthStore } from '@/store/useAuthStore'
 const NAV_ITEMS = [
   { to: '/',        icon: LayoutDashboard, label: '대시보드' },
   { to: '/journal', icon: BookOpen,        label: '소재 목록' },
-  { to: '/new',     icon: PlusCircle,      label: '새 소재'  },
-  { to: '/export',  icon: Download,        label: '내보내기' },
+  { to: '/new',     icon: PlusCircle,      label: 'NEW'  },
+  { to: '/export',  icon: Download,        label: 'DOWNLOAD' },
   { to: '/settings',icon: Settings,        label: '설정'    },
 ]
 

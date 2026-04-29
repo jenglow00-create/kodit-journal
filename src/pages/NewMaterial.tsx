@@ -144,7 +144,7 @@ export default function NewMaterial() {
         </div>
 
         <div className="form-row">
-          <label>완성도: <strong>{form.completion}%</strong></label>
+          <label>작성률: <strong>{form.completion}%</strong></label>
           <input
             type="range" min={0} max={100} step={25}
             value={form.completion}

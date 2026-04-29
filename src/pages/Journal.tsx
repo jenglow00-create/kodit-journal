@@ -40,7 +40,7 @@ export default function Journal() {
           {COMPETENCY_OPTIONS.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
         <select value={filterCompletion} onChange={e => setFilterCompletion(+e.target.value)}>
-          <option value={-1}>전체 완성도</option>
+          <option value={-1}>전체 작성률</option>
           {Object.entries(COMPLETION_LABELS).map(([k, v]) =>
             <option key={k} value={k}>{v} ({k}%)</option>
           )}
