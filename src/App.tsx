@@ -9,7 +9,7 @@ import Dashboard from '@/pages/Dashboard'
 import Journal from '@/pages/Journal'
 import NewMaterial from '@/pages/NewMaterial'
 import Export from '@/pages/Export'
-import CustomerMatrix from '@/pages/CustomerMatrix'
+import Memo from '@/pages/Memo'
 import '@/styles/global.css'
 
 function ProtectedLayout({ children }: { children: React.ReactNode }) {
@@ -41,7 +41,7 @@ export default function App() {
         <Routes>
           <Route path="/"        element={<Dashboard />} />
           <Route path="/journal" element={<Journal />} />
-          <Route path="/matrix"  element={<CustomerMatrix />} />
+          <Route path="/memo"    element={<Memo />} />
           <Route path="/new"     element={<NewMaterial />} />
           <Route path="/edit/:id" element={<NewMaterial />} />
           <Route path="/export"  element={<Export />} />

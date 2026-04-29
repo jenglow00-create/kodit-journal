@@ -1,10 +1,10 @@
 ﻿import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, BookOpen, PlusCircle, Download, GitBranch } from 'lucide-react'
+import { LayoutDashboard, BookOpen, PlusCircle, Download, StickyNote } from 'lucide-react'
 
 const TABS = [
   { to: '/',        icon: LayoutDashboard, label: '대시보드' },
   { to: '/journal', icon: BookOpen,        label: '목록'    },
-  { to: '/matrix',  icon: GitBranch,       label: '매트릭스'},
+  { to: '/memo',    icon: StickyNote,      label: '메모'    },
   { to: '/new',     icon: PlusCircle,      label: 'NEW'    },
   { to: '/export',  icon: Download,        label: 'DOWNLOAD'},
 ]
