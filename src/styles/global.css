@@ -155,6 +155,15 @@ body {
 .btn-icon     { background: transparent; color: var(--text-dim); padding: 6px; }
 .btn-icon:hover { color: var(--text); }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-convert {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 8px; padding: 7px 14px; border-radius: 8px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff; font-size: 0.82rem; font-weight: 600;
+  border: none; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-convert:hover:not(:disabled) { opacity: 0.85; }
+.convert-error { margin-top: 6px; font-size: 0.8rem; color: var(--red); }
 
 /* ── 폼 ───────────────────────────────────────────────── */
 .material-form { display: flex; flex-direction: column; gap: 20px; }

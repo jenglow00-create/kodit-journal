@@ -1,9 +1,10 @@
 ﻿import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Save, Plus } from 'lucide-react'
+import { Save, Plus, Sparkles } from 'lucide-react'
 import { COMPETENCY_OPTIONS } from '@/types'
 import { useMaterialStore } from '@/store/useMaterialStore'
 import { useAuthStore } from '@/store/useAuthStore'
+import { convertToSpar } from '@/utils/sparConverter'
 
 const today = () => new Date().toISOString().split('T')[0]
 
@@ -19,6 +20,8 @@ export default function NewMaterial() {
     completion: 50,
   })
   const [saving, setSaving] = useState(false)
+  const [converting, setConverting] = useState(false)
+  const [convertError, setConvertError] = useState('')
   const [showCustom, setShowCustom] = useState(false)
   const [customInput, setCustomInput] = useState('')
 
@@ -53,6 +56,19 @@ export default function NewMaterial() {
   const f = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(prev => ({ ...prev, [field]: e.target.value }))
 
+  const handleConvertToSpar = async () => {
+    setConvertError('')
+    setConverting(true)
+    try {
+      const result = await convertToSpar(form.rawNote)
+      setForm(f => ({ ...f, ...result }))
+    } catch (err) {
+      setConvertError((err as Error).message)
+    } finally {
+      setConverting(false)
+    }
+  }
+
   const customTags = form.competencyTags.filter(t => !COMPETENCY_OPTIONS.includes(t))
 
   return (
@@ -76,8 +92,18 @@ export default function NewMaterial() {
 
         <div className="form-row">
           <label>관찰 메모 <span className="hint">(자유롭게)</span></label>
-          <textarea value={form.rawNote} onChange={f('rawNote')} rows={3}
-            placeholder="그날 있었던 일을 자유롭게 기록..." />
+          <textarea value={form.rawNote} onChange={f('rawNote')} rows={4}
+            placeholder="그날 있었던 일을 자유롭게 기록하세요. 아래 버튼을 누르면 AI가 SPAR 구조로 자동 변환해드립니다." />
+          <button
+            type="button"
+            className="btn-convert"
+            onClick={handleConvertToSpar}
+            disabled={converting || !form.rawNote.trim()}
+          >
+            <Sparkles size={14} />
+            {converting ? 'AI 변환 중...' : 'SPAR 자동변환'}
+          </button>
+          {convertError && <p className="convert-error">{convertError}</p>}
         </div>
 
         <div className="spar-section">
